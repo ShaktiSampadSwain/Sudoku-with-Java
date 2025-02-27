@@ -74,32 +74,27 @@ public class Sudoku {
                 Tile tile = new Tile(r,c);
                 char tileChar = puzzle[r].charAt(c);
                 if(tileChar != '-'){
-                    tile.setFont(new Font("Ariel", Font.BOLD,20));
+                    tile.setFont(new Font("Ariel", Font.PLAIN,20));
                     tile.setText(String.valueOf(tileChar));
                     tile.setBackground(Color.WHITE );
                 }
                 else{
-                    tile.setFont(new Font("Ariel",Font.PLAIN,20));
+                    tile.setFont(new Font("Ariel",Font.BOLD,20));
                     tile.setBackground(Color.GRAY);
                 }
-                int top = 1,left = 1,bottom = 1,right = 1;
+                // borders
                 if (r == 2 && c == 2 || r == 5 && c == 5 || r == 2 && c == 5 || r == 5 && c == 2) {
-                    //tile.setBorder(BorderFactory.createMatteBorder(1,1,3,3, Color.black));
-                    bottom = 3;
-                    right = 3;
+                    tile.setBorder(BorderFactory.createMatteBorder(1,1,3,3, Color.black));
                 }
                 else if(c == 2 || c == 5){
-                    //tile.setBorder(BorderFactory.createMatteBorder(1,1,1,3, Color.black));
-                    right = 3;
+                    tile.setBorder(BorderFactory.createMatteBorder(1,1,1,3, Color.black));
                 }
                 else if(r == 2 || r == 5){
-                    //tile.setBorder(BorderFactory.createMatteBorder(1,1,3,1, Color.black));
-                    bottom = 3;
+                    tile.setBorder(BorderFactory.createMatteBorder(1,1,3,1, Color.black));
                 }
-//                else {
-//                    tile.setBorder(BorderFactory.createMatteBorder(1,1,1,1,Color.black));
-//                }
-                tile.setBorder(BorderFactory.createMatteBorder(top,left,bottom,right, Color.black));
+                else {
+                    tile.setBorder(BorderFactory.createLineBorder(Color.black));
+                }
 
 
                 boardPanel.add(tile);
